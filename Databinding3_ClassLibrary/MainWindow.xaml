@@ -1,0 +1,30 @@
+﻿<Window x:Class="Databinding3_ClassLibrary.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Databinding3_ClassLibrary"
+        xmlns:other="clr-namespace:Databinding3_ClassLibrary.Converters"
+        mc:Ignorable="d"
+            Title="MainWindow" Height="500" Width="860" Background="Yellow">
+    <Window.Resources>
+        <other:LabelFontSizeConverter x:Key="lblFontSizeConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="lblBind1" Content="Test1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="{Binding ElementName=sldBind1, Path=Value, Mode=OneWay}" Grid.Row="0" Grid.Column="0"/>
+        <Label x:Name="lblBind2" Content="Test2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="{Binding ElementName=sldBind1, Path=Value, Mode=OneWay, Converter={StaticResource lblFontSizeConverter}}" Grid.Row="0" Grid.Column="1"/>
+        <TextBox x:Name="txtBind1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=sldBind1, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="0" KeyDown="txtCheckForValidKeyPressedPositiveInteger"/>
+        <Slider x:Name="sldBind1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="auto" Width="400" Minimum="{Binding Source={x:Static local:MainWindow.SliderMinValue}}" Maximum="{Binding Source={x:Static local:MainWindow.SliderMaxValue}}" Grid.Row="2" Grid.Column="0" Value="{Binding ElementName=txtBind1, Path=Text, Mode=TwoWay}" Visibility="Visible" IsSnapToTickEnabled="True" TickFrequency="1"/>
+    </Grid>
+</Window>
