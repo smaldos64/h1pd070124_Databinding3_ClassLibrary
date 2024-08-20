@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Databinding3_ClassLibrary"
         xmlns:other="clr-namespace:Databinding3_ClassLibrary.Converters"
         mc:Ignorable="d"
-            Title="MainWindow" Height="500" Width="860" Background="Yellow">
+            Title="DataBinding3" Height="500" Width="860" Background="Yellow">
     <Window.Resources>
         <other:LabelFontSizeConverter x:Key="lblFontSizeConverter" />
     </Window.Resources>
@@ -22,9 +22,59 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label x:Name="lblBind1" Content="Test1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="{Binding ElementName=sldBind1, Path=Value, Mode=OneWay}" Grid.Row="0" Grid.Column="0"/>
-        <Label x:Name="lblBind2" Content="Test2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="{Binding ElementName=sldBind1, Path=Value, Mode=OneWay, Converter={StaticResource lblFontSizeConverter}}" Grid.Row="0" Grid.Column="1"/>
-        <TextBox x:Name="txtBind1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding ElementName=sldBind1, Path=Value, Mode=TwoWay}" VerticalAlignment="Top" Width="120" Grid.Row="1" Grid.Column="0" KeyDown="txtCheckForValidKeyPressedPositiveInteger"/>
-        <Slider x:Name="sldBind1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="auto" Width="400" Minimum="{Binding Source={x:Static local:MainWindow.SliderMinValue}}" Maximum="{Binding Source={x:Static local:MainWindow.SliderMaxValue}}" Grid.Row="2" Grid.Column="0" Value="{Binding ElementName=txtBind1, Path=Text, Mode=TwoWay}" Visibility="Visible" IsSnapToTickEnabled="True" TickFrequency="1"/>
+        <Label x:Name="lblBind1" 
+               Content="Test1" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               FontSize="{Binding ElementName=sldBind1, Path=Value, Mode=OneWay}" 
+               Grid.Row="0" 
+               Grid.Column="0"
+        />
+        
+        <Label x:Name="lblBind2" 
+               Content="Test2" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top" 
+               FontSize="{Binding ElementName=sldBind1, Path=Value, Mode=OneWay, Converter={StaticResource lblFontSizeConverter}}" 
+               Grid.Row="0" 
+               Grid.Column="1"
+        />
+        
+        <TextBox x:Name="txtBind1" 
+                 HorizontalAlignment="Left" 
+                 Height="23" TextWrapping="Wrap" 
+                 Text="{Binding ElementName=sldBind1, Path=Value, Mode=TwoWay}" 
+                 VerticalAlignment="Top" 
+                 Width="120" 
+                 Grid.Row="1" 
+                 Grid.Column="0" 
+                 KeyDown="txtCheckForValidKeyPressedPositiveInteger"
+        />
+
+        <TextBox x:Name="txtBind2" 
+             HorizontalAlignment="Left" 
+             Height="23" TextWrapping="Wrap" 
+             Text="{Binding ElementName=lblBind2, Path=FontSize, Mode=OneWay}" 
+             VerticalAlignment="Top" 
+             Width="120" 
+             Grid.Row="1" 
+             Grid.Column="1" 
+             IsEnabled="False"
+         />
+
+        <Slider x:Name="sldBind1" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Height="auto" 
+                Width="400" 
+                Minimum="{Binding Source={x:Static local:MainWindow.SliderMinValue}}" 
+                Maximum="{Binding Source={x:Static local:MainWindow.SliderMaxValue}}" 
+                Grid.Row="2" 
+                Grid.Column="0" 
+                Value="{Binding ElementName=txtBind1, Path=Text, Mode=TwoWay}" 
+                Visibility="Visible" 
+                IsSnapToTickEnabled="True" 
+                TickFrequency="1"
+        />
     </Grid>
 </Window>
