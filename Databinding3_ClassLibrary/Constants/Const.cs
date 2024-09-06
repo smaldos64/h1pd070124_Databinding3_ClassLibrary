@@ -9,6 +9,8 @@ namespace Databinding3_ClassLibrary.Constants
     public class Const 
     {
         public static readonly double MinLabelFontSizeValue = 1;
-        public static readonly double MaxLabelFontSizeValue = 100;
+        public static readonly double MaxLabelFontSizeValue = 140;
+        public static readonly double SliderChangeValue = 50;
+        public static double CurrentMaxLabelFontSizeValue = MaxLabelFontSizeValue;
     }
 }

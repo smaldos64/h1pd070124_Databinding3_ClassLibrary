@@ -18,7 +18,7 @@ namespace Databinding3_ClassLibrary.Converters
             {
                 if (FontSizeValue > 0)
                 {
-                    return System.Convert.ToDouble(Const.MaxLabelFontSizeValue + 1 - FontSizeValue);
+                    return System.Convert.ToDouble(Const.CurrentMaxLabelFontSizeValue + 1 - FontSizeValue);
                 }
                 else
                 {

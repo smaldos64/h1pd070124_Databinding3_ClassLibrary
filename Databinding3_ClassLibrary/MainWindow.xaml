@@ -21,6 +21,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label x:Name="lblBind1" 
                Content="Test1" 
@@ -68,7 +70,7 @@
                 Height="auto" 
                 Width="400" 
                 Minimum="{Binding Source={x:Static local:MainWindow.SliderMinValue}}" 
-                Maximum="{Binding Source={x:Static local:MainWindow.SliderMaxValue}}" 
+                Maximum="{Binding Path=SliderMaxValue}" 
                 Grid.Row="2" 
                 Grid.Column="0" 
                 Value="{Binding ElementName=txtBind1, Path=Text, Mode=TwoWay}" 
@@ -76,5 +78,10 @@
                 IsSnapToTickEnabled="True" 
                 TickFrequency="1"
         />
+
+        <Button x:Name="btnChangeSliderMaxValuePositive" Content="Ændre Slider Max Værdi (+50)" Grid.Row="3" Grid.Column="0" Click="btnChangeSliderMaxValuePositive_Click"/>
+        <Button x:Name="btnChangeSliderMaxValueNegative" Content="Ændre Slider Max Værdi (-50)" Grid.Row="3" Grid.Column="1" Click="btnChangeSliderMaxValueNegative_Click"/>
+        <TextBox x:Name="txtSliderMaxValue" Text="{Binding Path=SliderMaxValue, Mode=OneWay}" Grid.Row="4" Grid.Column="0" MinWidth="100"/>
+
     </Grid>
 </Window>
